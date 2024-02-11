@@ -5,6 +5,12 @@ class customMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("Test Menu");
+    return Text(
+      "Kelvin Weather",
+      style: TextStyle(
+        color: Colors.white,
+        fontSize: 24,
+      ),
+    );
   }
 }
