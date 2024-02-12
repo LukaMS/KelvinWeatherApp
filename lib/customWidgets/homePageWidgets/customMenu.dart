@@ -5,7 +5,7 @@ class customMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return const Text(
       "Kelvin Weather",
       style: TextStyle(
         color: Colors.white,
