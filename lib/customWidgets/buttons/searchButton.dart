@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class searchButton extends StatelessWidget {
@@ -7,10 +9,9 @@ class searchButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
               color: Colors.white,
-              icon: Icon(Icons.search),
+              icon: const Icon(Icons.search),
               onPressed: () async {
-                // Navigate to the search page
-                // Navigator.pushNamed(context, '/search');
+                Navigator.pushNamed(context, '/search');
               },
             );
   }
