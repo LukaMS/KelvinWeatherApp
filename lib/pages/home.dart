@@ -21,7 +21,6 @@ class _HomeState extends State<Home> {
 
     
     final weatherProvider = Provider.of<WeatherProvider>(context);
-    print(weatherProvider.forecastDataList);
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
@@ -32,7 +31,7 @@ class _HomeState extends State<Home> {
         children: [
 
           // Background Image
-          const backgroundImage(),
+          backgroundImage(weatherData: weatherProvider.weatherData),
 
           //Beginning of the main content
           SafeArea(
@@ -48,7 +47,7 @@ class _HomeState extends State<Home> {
                     const SizedBox(height: 20,),
 
                     //Time Display Widget
-                    timeDisplay(time: TimeOfDay.now()),
+                    timeDisplay(weatherData: weatherProvider.weatherData),
                     const SizedBox(height: 20,),
                     
                     //5 Day Label

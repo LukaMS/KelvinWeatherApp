@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:kelvin_weather/services/weatherModel.dart';
 
 class timeDisplay extends StatelessWidget {
-  final TimeOfDay? time;
+  final WeatherModel? weatherData;
 
-  const timeDisplay({Key? key, this.time}) : super(key: key);
+  const timeDisplay({Key? key, this.weatherData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    String displayText = time != null ? '${time!.hour}:${time!.minute}' : 'No time provided';
+    String displayText = weatherData != null ? weatherData!.time : 'No time provided';
 
     return Text(
       displayText,
       style: TextStyle(
-        fontSize: time != null ? 60 : 20,
+        fontSize: weatherData != null ? 60 : 20,
         color: Colors.white,
       ),
     );
