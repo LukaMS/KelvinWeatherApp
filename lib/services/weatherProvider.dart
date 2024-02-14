@@ -12,9 +12,23 @@ class WeatherProvider extends ChangeNotifier {
   WeatherModel? get weatherData => _weatherData;
   String? get errorMessage => _errorMessage;
 
-  Future<void> fetchWeather(String city) async {
+  // Method to fetch weather data by city name
+  Future<void> fetchWeatherByCity(String city) async {
     try {
-      final weather = await weatherService.getWeather(city);
+      final weather = await weatherService.getWeatherByCity(city);
+      _weatherData = weather;
+      _errorMessage = null;
+    } catch (e) {
+      _weatherData = null;
+      _errorMessage = 'Failed to fetch weather data';
+    }
+    notifyListeners();
+  }
+
+  // Method to fetch weather data by latitude and longitude
+  Future<void> fetchWeatherByLocation(double latitude, double longitude) async {
+    try {
+      final weather = await weatherService.getWeatherByLocation(latitude, longitude);
       _weatherData = weather;
       _errorMessage = null;
     } catch (e) {

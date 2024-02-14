@@ -17,7 +17,7 @@ class _SearchState extends State<Search> {
         preferredSize: Size.fromHeight(kToolbarHeight),
         child: searchAppBar(),
       ),
-      body: searchBar(),
+      body: CustomSearchBar(),
     );
   }
 }

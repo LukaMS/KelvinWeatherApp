@@ -15,7 +15,7 @@ class _LoadingState extends State<Loading> {
   void setUp(BuildContext context) async {
     try {
       final weatherProvider = Provider.of<WeatherProvider>(context, listen: false);
-      await weatherProvider.fetchWeather('Toronto');
+      await weatherProvider.fetchWeatherByCity('Toronto');
       Navigator.pushReplacementNamed(context, '/home');
     } catch (e) {
       // Handle error, if any

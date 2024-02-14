@@ -2,30 +2,32 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:kelvin_weather/services/weatherModel.dart';
 
-class WeatherAPI{
+class WeatherAPI {
   final String apiKey;
   final String baseUrl;
 
   WeatherAPI({required this.apiKey, required this.baseUrl});
 
-  Future<WeatherModel> getWeather(String city) async {
-    // Construct URL for API request
+
+  //"Overloading" the getWeather method to accept either city name or location coordinates
+  Future<WeatherModel> getWeatherByCity(String city) async {
     final apiUrl = '$baseUrl?q=$city&appid=$apiKey';
+    return _fetchWeather(apiUrl);
+  }
 
-    // Make HTTP GET request
+  Future<WeatherModel> getWeatherByLocation(double latitude, double longitude) async {
+    final apiUrl = '$baseUrl?lat=$latitude&lon=$longitude&appid=$apiKey';
+    return _fetchWeather(apiUrl);
+  }
+
+  //Method to fetch weather data from the OpenWeatherMap API
+  Future<WeatherModel> _fetchWeather(String apiUrl) async {
     final response = await http.get(Uri.parse(apiUrl));
-
-    // Check if request was successful
     if (response.statusCode == 200) {
-      // Parse JSON response
       final jsonData = jsonDecode(response.body);
-      
-      // Create WeatherModel object from JSON data
       final weatherData = WeatherModel.fromJson(jsonData);
-
       return weatherData;
     } else {
-      // If request was not successful, throw an error
       throw Exception('Failed to load weather data');
     }
   }
