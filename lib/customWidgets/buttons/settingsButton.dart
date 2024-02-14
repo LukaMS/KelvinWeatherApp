@@ -10,8 +10,7 @@ class settingsButton extends StatelessWidget {
             icon: Icon(Icons.settings),
             color: Colors.white,
             onPressed: () async {
-              // Navigate to the settings page
-              // Navigator.pushNamed(context, '/settings');
+              Navigator.pushNamed(context, '/settings');
             },
           ); 
   }

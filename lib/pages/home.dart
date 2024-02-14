@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kelvin_weather/customWidgets/homePageWidgets/5dayLabel.dart';
+import 'package:kelvin_weather/customWidgets/homePageWidgets/backgroundImage.dart';
 import 'package:kelvin_weather/customWidgets/homePageWidgets/homeAppBar.dart';
 import 'package:kelvin_weather/customWidgets/homePageWidgets/fiveRowDisplay.dart';
 import 'package:kelvin_weather/customWidgets/homePageWidgets/largeWeatherText.dart';
@@ -37,16 +38,7 @@ class _HomeState extends State<Home> {
         children: [
 
           // Background Image
-          Positioned.fill(
-            child: Container(
-              decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/bgImages/dayNew.jpg'),
-                fit: BoxFit.cover,
-                ),
-              ),
-            ),
-          ),
+          const backgroundImage(),
 
           //Beginning of the main content
           SafeArea(
