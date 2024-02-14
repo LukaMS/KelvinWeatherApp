@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:kelvin_weather/services/weatherModel.dart';
 
 class largeWeatherText extends StatelessWidget {
 
-  final double temperature;
+  WeatherModel? weatherData;
 
-  const largeWeatherText({Key? key, this.temperature = double.nan}) : super(key: key);
+  largeWeatherText({Key? key, this.weatherData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-    String displayText = temperature.isNaN ? 'No temperature Found' : '$temperature°C';
+    String displayText;
+    double fontSize = weatherData != null ? 80 : 40;
+
+    if (weatherData != null) {
+      displayText = '${weatherData!.temperature} K';
+    } else {
+      displayText = 'Loading...';
+    }
 
     return Text(
       displayText,
       style: TextStyle(
-        fontSize: temperature.isNaN ? 40 : 80,
+        fontSize: fontSize,
         color: Colors.white,
       ),
     );

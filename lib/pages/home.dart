@@ -5,6 +5,8 @@ import 'package:kelvin_weather/customWidgets/homePageWidgets/homeAppBar.dart';
 import 'package:kelvin_weather/customWidgets/homePageWidgets/fiveRowDisplay.dart';
 import 'package:kelvin_weather/customWidgets/homePageWidgets/largeWeatherText.dart';
 import 'package:kelvin_weather/customWidgets/homePageWidgets/timeDisplay.dart';
+import 'package:kelvin_weather/services/weatherProvider.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -27,6 +29,7 @@ class _HomeState extends State<Home> {
       {'date': 'Feb 14', 'morningTemperature': '8°C', 'eveningTemperature': '2°C'},
     ];
 
+    final weatherProvider = Provider.of<WeatherProvider>(context);
 
     return Scaffold(
       extendBodyBehindAppBar: true,
@@ -50,7 +53,7 @@ class _HomeState extends State<Home> {
                   children: [
                     //Main Weather Temperature Display
                     const SizedBox(height: 100,),
-                    const largeWeatherText(temperature: 10),
+                    largeWeatherText(weatherData: weatherProvider.weatherData),
                     const SizedBox(height: 20,),
 
                     //Time Display Widget
