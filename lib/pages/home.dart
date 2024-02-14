@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kelvin_weather/customWidgets/homePageWidgets/5dayLabel.dart';
-import 'package:kelvin_weather/customWidgets/buttons/searchButton.dart';
-import 'package:kelvin_weather/customWidgets/buttons/settingsButton.dart';
-import 'package:kelvin_weather/customWidgets/homePageWidgets/customMenu.dart';
+import 'package:kelvin_weather/customWidgets/homePageWidgets/homeAppBar.dart';
 import 'package:kelvin_weather/customWidgets/homePageWidgets/fiveRowDisplay.dart';
 import 'package:kelvin_weather/customWidgets/homePageWidgets/largeWeatherText.dart';
 import 'package:kelvin_weather/customWidgets/homePageWidgets/timeDisplay.dart';
@@ -18,6 +16,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
 
+    //Test Data so that the 5 day weather display can be tested
+    //Future I will have to replace this with actual data from the API
     List<Map<String, String>> data = [
       {'date': 'Feb 10', 'morningTemperature': '10°C', 'eveningTemperature': '5°C'},
       {'date': 'Feb 11', 'morningTemperature': '12°C', 'eveningTemperature': '6°C'},
@@ -29,14 +29,9 @@ class _HomeState extends State<Home> {
 
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.white.withOpacity(0),
-        leading: const settingsButton(),
-        title: const customMenu(),
-        centerTitle: true,
-        actions: const [
-          searchButton(),
-        ],
+      appBar: const PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight),
+        child: homeAppBar(),
       ),
       body: Stack(
         children: [
