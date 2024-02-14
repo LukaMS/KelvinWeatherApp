@@ -69,6 +69,7 @@ class _SearchBarState extends State<CustomSearchBar> {
                   double longitude = coordinates['longitude'];
 
                   await weatherProvider.fetchWeatherByLocation(latitude, longitude);
+                  await weatherProvider.fetchForecastByLocation(latitude, longitude);
 
                   //Pop back to the home page
                   Navigator.pushReplacement(

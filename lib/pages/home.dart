@@ -19,23 +19,14 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
 
-    //Test Data so that the 5 day weather display can be tested
-    //Future I will have to replace this with actual data from the API
-    List<Map<String, String>> data = [
-      {'date': 'Feb 10', 'morningTemperature': '10°C', 'eveningTemperature': '5°C'},
-      {'date': 'Feb 11', 'morningTemperature': '12°C', 'eveningTemperature': '6°C'},
-      {'date': 'Feb 12', 'morningTemperature': '11°C', 'eveningTemperature': '7°C'},
-      {'date': 'Feb 13', 'morningTemperature': '9°C', 'eveningTemperature': '4°C'},
-      {'date': 'Feb 14', 'morningTemperature': '8°C', 'eveningTemperature': '2°C'},
-    ];
-
+    
     final weatherProvider = Provider.of<WeatherProvider>(context);
-
+    print(weatherProvider.forecastDataList);
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: const PreferredSize(
+      appBar: PreferredSize(
         preferredSize: Size.fromHeight(kToolbarHeight),
-        child: homeAppBar(),
+        child: homeAppBar(weatherData: weatherProvider.weatherData),
       ),
       body: Stack(
         children: [
@@ -52,7 +43,7 @@ class _HomeState extends State<Home> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     //Main Weather Temperature Display
-                    const SizedBox(height: 100,),
+                    const SizedBox(height: 200,),
                     largeWeatherText(weatherData: weatherProvider.weatherData),
                     const SizedBox(height: 20,),
 
@@ -64,8 +55,7 @@ class _HomeState extends State<Home> {
                     const fivedayLabel(),
 
                     //5 Day Weather Display
-                    fiveRowDisplay(data: data),
-
+                    fiveRowDisplay(forecastDataList: weatherProvider.forecastDataList ?? []),
                     const SizedBox(height: 200),
                   ],
                 ),

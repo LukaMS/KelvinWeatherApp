@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:kelvin_weather/services/weatherModel.dart';
 
 class customMenu extends StatelessWidget {
-  const customMenu({super.key});
+
+  WeatherModel? weatherData;
+
+  customMenu({super.key, this.weatherData});
 
   @override
   Widget build(BuildContext context) {
-    return const Text(
-      "Kelvin Weather",
-      style: TextStyle(
+
+    String displayText;
+
+    if (weatherData != null) {
+      displayText = "${weatherData!.flagEmoji} ${weatherData!.cityName}";
+    } else {
+      displayText = 'Loading...';
+    }
+
+    return Text(
+      displayText,
+      style: const TextStyle(
         color: Colors.white,
         fontSize: 24,
       ),
