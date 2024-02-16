@@ -4,11 +4,17 @@ import 'package:kelvin_weather/pages/loading.dart';
 import 'package:kelvin_weather/pages/search.dart';
 import 'package:kelvin_weather/pages/settings.dart';
 import 'package:kelvin_weather/services/fiveDayWeatherAPI.dart';
+import 'package:kelvin_weather/services/settingsProvider.dart';
+import 'package:kelvin_weather/services/userPreferences.dart';
 import 'package:kelvin_weather/services/weatherProvider.dart';
 import 'package:kelvin_weather/services/weatherAPI.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await UserPreferences.init();
+
   runApp(MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -22,6 +28,7 @@ void main() {
             )
           ),
         ),
+        ChangeNotifierProvider(create: (context) => SettingsProvider()),
       ],
       child: MaterialApp(
         initialRoute: '/',
