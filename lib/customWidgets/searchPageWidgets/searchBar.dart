@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_google_maps_webservices/places.dart';
 import 'package:kelvin_weather/pages/home.dart';
+import 'package:kelvin_weather/pages/newHome.dart';
 import 'package:kelvin_weather/services/googleGeocoding.dart';
 import 'package:kelvin_weather/services/weatherProvider.dart';
 import 'package:provider/provider.dart';
@@ -62,9 +63,9 @@ class _SearchBarState extends State<CustomSearchBar> {
                 onTap: () async {
                   //Get City name from the selected prediction and update weather data
                   String city = _predictions[index].terms.first.value;
-                  
+                  String country = _predictions[index].terms.last.value;
                   //Get coordinates from Google Geocoding API
-                  Map<String, dynamic> coordinates = await _geocodingAPI.getLocationCoordinates(city);
+                  Map<String, dynamic> coordinates = await _geocodingAPI.getLocationCoordinates(city, country);
                   double latitude = coordinates['latitude'];
                   double longitude = coordinates['longitude'];
 
@@ -74,7 +75,7 @@ class _SearchBarState extends State<CustomSearchBar> {
                   //Pop back to the home page
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(builder: (context) => const Home()),
+                    MaterialPageRoute(builder: (context) => const newHome()),
                   );
                   _textEditingController.text = _predictions[index].description!;
                 },

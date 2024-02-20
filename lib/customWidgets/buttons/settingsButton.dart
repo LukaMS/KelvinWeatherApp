@@ -8,7 +8,8 @@ class settingsButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
             icon: Icon(Icons.settings),
-            color: Colors.white,
+            iconSize: 35,
+            color: Colors.black,
             onPressed: () async {
               Navigator.pushNamed(context, '/settings');
             },

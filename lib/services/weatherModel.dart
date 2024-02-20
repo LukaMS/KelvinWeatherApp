@@ -9,6 +9,11 @@ class WeatherModel {
   final double sunrise;
   final double sunset;
   final double dateTime;
+  final double feelsLike;
+  final double humidity;
+  final double windSpeed;
+  final double pressure;
+  final String description;
 
   WeatherModel({
     required this.cityName,
@@ -18,6 +23,11 @@ class WeatherModel {
     required this.sunrise,
     required this.sunset,
     required this.dateTime,
+    required this.feelsLike,
+    required this.humidity,
+    required this.windSpeed,
+    required this.pressure,
+    required this.description,
   }) {
     flagEmoji = _getFlagEmoji(countryCode); // Initialize flag emoji
   }
@@ -31,6 +41,11 @@ class WeatherModel {
       sunrise: jsonData['sys']['sunrise'].toDouble(),
       sunset: jsonData['sys']['sunset'].toDouble(),
       dateTime: jsonData['dt'].toDouble(),
+      feelsLike: jsonData['main']['feels_like'].toDouble(),
+      humidity: jsonData['main']['humidity'].toDouble(),
+      windSpeed: jsonData['wind']['speed'].toDouble(),
+      pressure: jsonData['main']['pressure'].toDouble(),
+      description: jsonData['weather'][0]['description'],
     );
   }
 

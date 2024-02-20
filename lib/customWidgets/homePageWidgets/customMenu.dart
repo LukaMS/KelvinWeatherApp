@@ -21,8 +21,9 @@ class customMenu extends StatelessWidget {
     return Text(
       displayText,
       style: const TextStyle(
-        color: Colors.white,
+        color: Colors.black,
         fontSize: 24,
+        fontWeight: FontWeight.bold,
       ),
     );
   }

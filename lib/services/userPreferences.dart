@@ -12,5 +12,6 @@ class UserPreferences {
       await _preferences.setString(_keyUnit, unit);
 
   static String getUnit() => 
-      _preferences.getString(_keyUnit) ?? 'Kelvin'; // Default to Kelvin
+      _preferences.getString(_keyUnit) ?? 'Kelvin';
+
 }

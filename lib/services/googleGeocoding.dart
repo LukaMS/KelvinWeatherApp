@@ -6,8 +6,8 @@ class GoogleGeocodingAPI {
 
   GoogleGeocodingAPI({required this.apiKey});
 
-  Future<Map<String, dynamic>> getLocationCoordinates(String city) async {
-    final apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=$city&key=$apiKey';
+  Future<Map<String, dynamic>> getLocationCoordinates(String city, String country) async {
+    final apiUrl = 'https://maps.googleapis.com/maps/api/geocode/json?address=$city%20$country&key=$apiKey';
 
     final response = await http.get(Uri.parse(apiUrl));
 

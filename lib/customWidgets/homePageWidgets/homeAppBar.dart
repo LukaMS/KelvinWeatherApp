@@ -17,7 +17,7 @@ class homeAppBar extends StatelessWidget {
     return AppBar(
         backgroundColor: Colors.white.withOpacity(0),
         leading: const settingsButton(),
-        title: customMenu(weatherData: weatherData),
+        title: customMenu(weatherData: weatherData,),
         centerTitle: true,
         actions: const [
           searchButton(),

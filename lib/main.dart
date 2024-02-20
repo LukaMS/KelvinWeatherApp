@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kelvin_weather/pages/home.dart';
 import 'package:kelvin_weather/pages/loading.dart';
+import 'package:kelvin_weather/pages/newHome.dart';
 import 'package:kelvin_weather/pages/search.dart';
 import 'package:kelvin_weather/pages/settings.dart';
 import 'package:kelvin_weather/services/fiveDayWeatherAPI.dart';
@@ -34,14 +35,11 @@ void main() async {
         initialRoute: '/',
         routes: {
           '/': (context) => const Loading(),
-          '/home': (context) => const Home(),
+          '/home': (context) => const newHome(),
           '/search': (context) => const Search(),
           '/settings': (context) => const Settings(),
         }
       ),
     )    
   );
-}
-
-class WeatherService {
 }

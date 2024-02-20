@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:kelvin_weather/services/settingsProvider.dart';
-import 'package:kelvin_weather/services/userPreferences.dart';
 import 'package:provider/provider.dart';
 import 'package:settings_ui/settings_ui.dart';
 
